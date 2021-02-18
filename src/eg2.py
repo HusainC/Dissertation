@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 # Read image
-im = cv2.imread("img/rog.jpg", cv2.IMREAD_GRAYSCALE)
+im = cv2.imread("../resources/img/rog.jpg", cv2.IMREAD_GRAYSCALE)
 
 # Setup SimpleBlobDetector parameters.
 params = cv2.SimpleBlobDetector_Params()

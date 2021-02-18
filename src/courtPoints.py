@@ -29,7 +29,7 @@ def cluster_points(points, nclusters):
     return centers
 
 # preprocessing
-img = cv2.imread("img/courtG.jpg")
+img = cv2.imread("../resources/img/courtG.jpg")
 
 greenLower = np.array([98, 111, 98])
 greenUpper = np.array([120, 181, 152])
@@ -89,7 +89,7 @@ h_lines, v_lines = segment_lines(lines, delta)
 
 # draw the segmented lines
 #lines = cv2.HoughLines(canny, 1, np.pi / 180, 150)
-black = cv2.imread("img/black.jpg")
+black = cv2.imread("../resources/img/black.jpg")
 for line in lines:
     rho, theta = line[0]
     a = np.cos(theta)
@@ -106,7 +106,7 @@ for line in lines:
 
 cv2.imshow("Segmented Hough Lines", black)
 cv2.waitKey(0)
-cv2.imwrite('img/hough.png', black)
+cv2.imwrite('../resources/img/hough.png', black)
 
 # find the line intersection points
 Px = []
@@ -127,7 +127,7 @@ for cx, cy in zip(Px, Py):
 
 cv2.imshow("Intersections", intersectsimg)
 cv2.waitKey(0)
-cv2.imwrite('img/intersections.png', intersectsimg)
+cv2.imwrite('../resources/img/intersections.png', intersectsimg)
 
 # use clustering to find the centers of the data clusters
 P = np.float32(np.column_stack((Px, Py)))

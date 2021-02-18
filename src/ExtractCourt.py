@@ -3,7 +3,7 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 import imutils
 
-img = cv.imread("img/courtG.jpg")
+img = cv.imread("../resources/img/courtG.jpg")
 
 greenLower = np.array([98, 111, 98])
 greenUpper = np.array([120, 181, 152])
@@ -55,7 +55,7 @@ cv.imshow("result", img1)
 canny = cv.Canny(img1, 100, 200,)
 
 lines = cv.HoughLines(canny, 1, np.pi / 180, 150)
-black = cv.imread("img/black.jpg")
+black = cv.imread("../resources/img/black.jpg")
 for line in lines:
     rho, theta = line[0]
     a = np.cos(theta)

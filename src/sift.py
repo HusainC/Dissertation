@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread('img/rog.jpg')
+img = cv2.imread('../resources/img/rog.jpg')
 gray= cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 
 sift = cv2.SIFT()

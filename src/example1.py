@@ -2,7 +2,7 @@ import cv2 as cv
 import numpy as np
 import imutils
 
-img = cv.imread('img/rog.jpg')
+img = cv.imread('../resources/img/rog.jpg')
 #img2 = cv.pyrDown(img)
 
 #gblur = cv.GaussianBlur(img2, (5,5), 0)

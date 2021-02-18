@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 
 # Read image
-img = cv2.imread("img/Sw.jpg", cv2.IMREAD_GRAYSCALE)
+img = cv2.imread("../resources/img/Sw.jpg", cv2.IMREAD_GRAYSCALE)
 # sobelX = cv2.Sobel(img, cv2.CV_64F, 1, 0)
 # sobelY = cv2.Sobel(img, cv2.CV_64F, 0, 1)
 #
