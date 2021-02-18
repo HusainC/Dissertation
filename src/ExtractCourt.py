@@ -3,10 +3,10 @@ import cv2 as cv
 from matplotlib import pyplot as plt
 import imutils
 
-img = cv.imread("../resources/img/courtG.jpg")
+img = cv.imread("../resources/img/court.png")
 
-greenLower = np.array([98, 111, 98])
-greenUpper = np.array([120, 181, 152])
+greenLower = np.array([95, 39, 114])
+greenUpper = np.array([109, 111, 162])
 
 gaussBlur = cv.GaussianBlur(img, (11, 11), 0)
 hsv = cv.cvtColor(gaussBlur, cv.COLOR_BGR2HSV)
@@ -41,7 +41,7 @@ ret, img1 = cv.threshold(erosion, 125, 255, cv.THRESH_BINARY_INV)
 
 contours, hierachy = cv.findContours(img1, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
-threshold_blobs_area = 5500
+threshold_blobs_area = 7000
 
 for i in range(1, len(contours)):
     index_level = int(hierachy[0][i][1])
@@ -51,10 +51,10 @@ for i in range(1, len(contours)):
         print(area)
         if area <= threshold_blobs_area:
             cv.drawContours(img1, [cnt], -1, 0, -1, 1)
-cv.imshow("result", img1)
-canny = cv.Canny(img1, 100, 200,)
 
-lines = cv.HoughLines(canny, 1, np.pi / 180, 150)
+canny = cv.Canny(img1, 100, 200)
+
+lines = cv.HoughLines(canny, 1, np.pi / 180, 200)
 black = cv.imread("../resources/img/black.jpg")
 for line in lines:
     rho, theta = line[0]
@@ -90,6 +90,7 @@ for i in range(8):
 plt.show()
 cv.imshow("img", black)
 cv.imshow("th2", canny)
+cv.imshow("result", img1)
 plt.show()
 cv.waitKey(0)
 cv.destroyAllWindows()
