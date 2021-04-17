@@ -97,5 +97,3 @@ cv.destroyAllWindows()
 # cv.imshow("feed", mask)
 # cv.waitKey(0)
 # cv.destroyAllWindows()
-
-
