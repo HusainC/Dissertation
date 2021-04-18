@@ -93,7 +93,6 @@ while True:
 
         if prevFrame:
             print(prevFrame)
-            print("fhello ", checkPrevFrame(prevFrame, currentFrame))
             prevFrame = currentFrame
         else:
             prevFrame.append(x1)

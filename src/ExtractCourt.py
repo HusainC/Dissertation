@@ -18,26 +18,11 @@ mask2 = cv.erode(mask1, None, iterations=2)
 mask3 = cv.dilate(mask2, None, iterations=2)
 _, mask = cv.threshold(mask3, 220, 255, cv.THRESH_BINARY_INV)
 
-kernal = np.ones((5,5), np.uint8)
+kernal = np.ones((5, 5), np.uint8)
 
 # dilation = cv.dilate(mask, kernal, iterations = 3)
 erosion = cv.erode(mask, kernal, iterations=3)
-# opening = cv.morphologyEx(mask, cv.MORPH_OPEN, kernal)
-# closing = cv.morphologyEx(mask, cv.MORPH_CLOSE, kernal)
-# mg = cv.morphologyEx(mask, cv.MORPH_GRADIENT, kernal)
-# th = cv.morphologyEx(mask, cv.MORPH_TOPHAT, kernal)
-#
-# titles = ['image', 'mask', 'dilation', 'erosion', 'opening', 'closing', 'mg', 'th']
-# images = [img, mask, dilation, erosion, opening, closing, mg, th]
-
-# for i in range(8):
-#     plt.subplot(2, 4, i+1), plt.imshow(images[i], 'gray')
-#     plt.title(titles[i])
-#     plt.xticks([]), plt.yticks([])
-
-# _,th2 = cv.threshold(erosion, 200, 255, cv.THRESH_BINARY_INV)
 ret, img1 = cv.threshold(erosion, 125, 255, cv.THRESH_BINARY_INV)
-
 
 contours, hierachy = cv.findContours(img1, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
 
@@ -70,7 +55,7 @@ for line in lines:
     y2 = int(y0 - 1000 * (a))
     cv.line(black, (x1, y1), (x2, y2), (0, 0, 255), 2)
 
-dilation = cv.dilate(black, kernal, iterations = 3)
+dilation = cv.dilate(black, kernal, iterations=3)
 erosion = cv.erode(black, kernal, iterations=3)
 opening = cv.morphologyEx(black, cv.MORPH_OPEN, kernal)
 closing = cv.morphologyEx(black, cv.MORPH_CLOSE, kernal)
@@ -78,12 +63,10 @@ mg = cv.morphologyEx(black, cv.MORPH_GRADIENT, kernal)
 th = cv.morphologyEx(black, cv.MORPH_TOPHAT, kernal)
 
 titles = ['image', 'mask', 'dilation', 'erosion', 'opening', 'closing', 'mg', 'th']
-images = [img, mask, dilation, erosion, opening, closing, mg , th]
-
-
+images = [img, mask, dilation, erosion, opening, closing, mg, th]
 
 for i in range(8):
-    plt.subplot(2, 4, i+1), plt.imshow(images[i], 'Accent')
+    plt.subplot(2, 4, i + 1), plt.imshow(images[i], 'Accent')
     plt.title(titles[i])
     plt.xticks([]), plt.yticks([])
 
